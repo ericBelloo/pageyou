@@ -1,0 +1,124 @@
+
+html,body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: sans-serif;
+  text-align: center;
+  background: radial-gradient(#4078ab,#214154,#13242f);
+}
+h3 {
+  color: #ccc;
+}
+.mapa {
+	width: 206px;
+	height: 206px;
+	position: absolute;
+    z-index: 3;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	border-radius: 50%;
+	background: #00b5f0;
+	box-shadow: -30px -20px 0 0  rgba(0,0,0,.1)inset,
+				-70px -30px 0 0 rgba(0, 0, 0, .1)inset,
+				5px 5px 0 0 rgba(255, 255, 255, .2) inset;
+    background: url("../img/mapa_1.png");
+    background-size: cover;
+
+    -webkit-animation: tierraGirando 5s infinite linear;
+}
+
+@keyframes tierraGirando {
+  from {
+    background-position: left center;
+  }
+  to {
+    background-position: -396px center;
+  }
+}
+.estrella {
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0 0 3px 3px rgba(255,255,255,.3);
+}
+.uno {
+  top: 30%;
+  left: 70%;
+}
+.dos {
+  top: 30%;
+  left: 30%;
+}
+.tres {
+  top: 50%;
+  left: 80%;
+}
+.cuatro {
+  top: 65%;
+  left: 80%;
+}
+.cinco {
+  top: 25%;
+  left: 15%;
+}
+.seis {
+  top: 10%;
+  left: 10%;
+}
+.siete {
+  top: 90%;
+  left: 20%;
+}
+.ocho {
+  top: 95%;
+  left: 50%;
+}
+.nueve {
+  top: 80%;
+  left: 90%;
+}
+.diez {
+  top: 75%;
+  left: 40%;
+}
+
+.once {
+  top: 60%;
+  left: 20%;
+}
+
+.doce{
+  top: 5%;
+  left: 90%;
+}
+
+.estrella:nth-child(2n){
+  animation: estrella-par 2s infinite;
+}
+@keyframes estrella-par {
+  0%, 90% {
+    box-shadow: 0 0 3px 3px rgba(255,255,255,.3);
+  }
+  100%{
+    box-shadow: 0 0 16px 16px rgba(255,255,255,.3);
+  }
+}
+.estrella:nth-child(2n+1){
+  animation: estrella-impar 1s infinite;
+}
+@keyframes estrella-impar {
+  0%, 30%, 50% {
+    box-shadow: 0 0 3px 3px rgba(255,255,255,.3);
+  }
+  45%{
+    box-shadow: 0 0 16px 16px rgba(255,255,255,.3);
+  }
+}
