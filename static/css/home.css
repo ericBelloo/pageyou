@@ -38,7 +38,7 @@ h3 {
     background-position: left center;
   }
   to {
-    background-position: -400px center;
+    background-position: -396px center;
   }
 }
 .estrella {
@@ -48,9 +48,8 @@ h3 {
     position: absolute;
     border-radius: 50%;
     box-shadow: 0 0 3px 3px rgba(255,255,255,.5);
-
+    animation: estrella-par 3s infinite;
 }
-
 .uno {
   top: 30%;
   left: 70%;
@@ -102,3 +101,11 @@ h3 {
   left: 90%;
 }
 
+@keyframes estrella-par {
+  0%, 90%{
+    box-shadow: 0 0 3px 3px rgba(255,255,255,.3);
+  }
+    50%{
+    box-shadow: 0 0 3px 3px rgba(255,255,255,.5);
+  }
+}
