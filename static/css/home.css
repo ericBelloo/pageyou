@@ -38,17 +38,19 @@ h3 {
     background-position: left center;
   }
   to {
-    background-position: -396px center;
+    background-position: -400px center;
   }
 }
 .estrella {
-  width: 2px;
-  height: 2px;
-  background: #fff;
-  position: absolute;
-  border-radius: 50%;
-  box-shadow: 0 0 3px 3px rgba(255,255,255,.5);
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0 0 3px 3px rgba(255,255,255,.5);
+
 }
+
 .uno {
   top: 30%;
   left: 70%;
