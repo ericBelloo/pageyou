@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+</head>
+<body>
+<div class="content">
+    <div class="wrap-form-content">
+        <div class="wrap-title">
+            <span>Analisis de Costo Beneficio</span>
+        </div>
+        <div class="wrap-body">
+            <div class="content-rc">
+                {# Punto de equilibrio #}
+                <div style="display: flex; flex-direction: column">
+                <div class="form">
+                    <span><b>Punto de equilibrio</b></span>
+                </div>
+                <div class="form">
+                <input type="text" placeholder="Costos" id="id_costos_pe" class="input-flat">
+                <input type="text" placeholder="Ingresos Incrementales" id="id_ingresos_pe" class="input-flat">
+                <input type="text" placeholder="No meses" id="id_meses_pe" class="input-flat">
+                <button class="btn btn-primary" id="btn_pe">Iniciar</button>
+            </div>
+                <div class="form">
+                <span class="text">Punto de equilibrio:</span>
+                <span id="r_pe"></span>
+            </div>
+                </div>
+                {# Periodo de devolucion #}
+                <div style="display: flex; flex-direction: column">
+                <div class="form">
+                    <span><b>Periodo de Devolucion</b></span>
+                </div>
+                <div class="form">
+                    <input type="text" placeholder="Costos" id="id_costos_pd" class="input-flat">
+                    <input type="text" placeholder="Valor Asegurado" id="id_valor_pd" class="input-flat">
+                    <input type="text" placeholder="Ingresos Incrementales" id="id_ingresos_pd" class="input-flat">
+                    <input type="text" placeholder="No meses" id="id_meses_pd" class="input-flat">
+                    <button class="btn btn-primary" id="btn_pd">Iniciar</button>
+                </div>
+                <div class="form">
+                <span class="text">Periodo de devolucion:</span>
+                <span id="r_pd"></span>
+            </div>
+            </div>
+                {# Valor presente Neto #}
+                <div style="display: flex; flex-direction: column">
+                <div class="form">
+                    <span><b>Valor Presente Neto</b></span>
+                </div>
+                <div class="form">
+                <input type="text" placeholder="Ingresos" id="id_ingresos_vpn" class="input-flat">
+                <input type="text" placeholder="Valor Asegurado" id="id_valor_vpn" class="input-flat">
+                <input type="text" placeholder="Factor de Descuento" id="id_descuento_vpn" class="input-flat">
+                <input type="text" placeholder="Inversion" id="id_inversion_vpn" class="input-flat">
+                <button class="btn btn-primary" id="btn_vpn">Iniciar</button>
+            </div>
+                <div class="form">
+                <span class="text">Valor presente:</span>
+                <span id="r_vp"></span>
+            </div>
+                <div class="form">
+                <span class="text">Valor presente neto:</span>
+                <span id="r_vpn"></span>
+            </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static 'js/home.js' %}"></script>
+</body>
+</html>

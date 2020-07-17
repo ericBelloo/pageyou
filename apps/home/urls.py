@@ -9,4 +9,5 @@ urlpatterns = [
     path('inversion-inicial/', InitialInvestment.as_view(), name='inversion_inicial'),
     path('tmar/', TMARView.as_view(), name='tmar'),
     path('fne/', FNEView.as_view(), name='fne'),
+    path('costo-veneficio/', CostoVeneficioView.as_view(), name='costo-veneficio')
 ]

@@ -300,3 +300,15 @@ input[type=checkbox]:checked:disabled + label:before {
   background-color: #bfb;
   border-color: #bfb;
 }
+
+.content-rc {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@media screen and (max-width: 400px) {
+  .content-rc {
+    flex-direction: column;
+  }
+}

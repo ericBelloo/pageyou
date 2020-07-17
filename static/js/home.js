@@ -2,18 +2,6 @@
 
 $('document').ready(function(){
 
-    if(document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-    }
-  //Google Chrome
-    else if(document.webkitCancelFullScreen) {
-        document.webkitCancelFullScreen();
-    }
-  //Otro
-     else if(document.cancelFullScreen) {
-         document.cancelFullScreen();
-     }
-
     $('#id_capital_prestado').on('click', function () {
         window.location = '/inversion-inicial/';
     });
@@ -23,7 +11,10 @@ $('document').ready(function(){
     $('#id_fne').on('click', function () {
         window.location = '/fne/';
     })
-    /*
+    $('#id_costo_veneficio').on('click', function () {
+        window.location = '/costo-veneficio/';
+    });
+    /**
     * Opciones para el  Pago del capital y los intereses al final del plazo.
     * */
     $(document).on('click','#btn_capital', function () {
@@ -173,5 +164,42 @@ $('document').ready(function(){
         }
     });
 
+    /**
+     * Opciones para analisis costo-veneficio
+     */
+    $(document).on('click', '#btn_pe', function () {
+        let costo = parseFloat($('#id_costos_pe').val());
+        let ingresos = parseFloat($('#id_ingresos_pe').val());
+        let meses = parseInt($('#id_meses_pe').val());
+
+        let pe = (costo / ingresos) * meses;
+        $('#r_pe').text(pe);
+    });
+
+    $(document).on('click', '#btn_pd', function () {
+        let costo = parseFloat($('#id_costos_pd').val());
+        let ingresos = parseFloat($('#id_ingresos_pd').val());
+        let meses = parseInt($('#id_meses_pd').val());
+        let valor = parseFloat($('#id_valor_pd').val());
+
+        let pd = ((costo-valor)/ingresos) * meses;
+        $('#r_pd').text(pd.toFixed(2));
+    });
+
+    $(document).on('click', '#btn_vpn', function () {
+        let ingresos = parseFloat($('#id_ingresos_vpn').val());
+        let valor = parseFloat($('#id_valor_vpn').val());
+        let descuento = parseFloat($('#id_descuento_vpn').val());
+        let invercion = parseFloat($('#id_inversion_vpn').val());
+
+        let vp = (ingresos + valor ) / descuento;
+        $('#r_vp').text(vp.toFixed(2));
+        let vpn = vp - invercion;
+        $('#r_vpn').text(vpn.toFixed(2));
+
+        console.log(vp);
+        console.log(vpn);
+
+    });
 
 });

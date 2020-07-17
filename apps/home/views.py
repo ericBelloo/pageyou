@@ -17,3 +17,7 @@ class TMARView(TemplateView):
 
 class FNEView(TemplateView):
     template_name = 'fne.html'
+
+
+class CostoVeneficioView(TemplateView):
+    template_name = 'costo_veneficio.html'
