@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+</head>
+<body>
+<div class="content">
+    <div class="wrap-form-content">
+        <div class="wrap-title">
+            <span>Tasa Mínima Aceptable de Rendimiento (TMAR) Mixta</span>
+        </div>
+        <div class="wrap-body">
+            <div class="form">
+                <label class="text">Invercionista Privado</label>
+                <input type="text" placeholder="Aportacion" class="input-flat" id="id_apor_inver">
+                <input type="text" placeholder="TMAR" class="input-flat" id="id_tmar_inv">
+            </div>
+            <div class="form">
+                <label class="text">Otras Empresas</label>
+                <input type="text" placeholder="Aportacion" class="input-flat" id="id_apor_otro">
+                <input type="text" placeholder="TMAR" class="input-flat" id="id_tmar_otro">
+            </div>
+            <div class="form">
+                <label class="text">Institucion Financiera</label>
+                <input type="text" placeholder="Aportacion" class="input-flat" id="id_apor_inst">
+                <input type="text" placeholder="TMAR" class="input-flat" id="id_tmar_inst">
+            </div>
+            <div class="form">
+                <button class="btn btn-primary" id="btn_tmar">Iniciar</button>
+            </div>
+            <div class="content-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Accionista</td>
+                            <td>Aportacion</td>
+                            <td>% Aportacion </td>
+                            <td>TMAR</td>
+                            <td>Poderacion</td>
+                        </tr>
+                    </thead>
+                    <tbody id="table_body_tmar">
+
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <span class="text">Aportacion Total: </span>
+                <span id="r_aportacion"></span>
+            </div>
+            <div>
+                <span class="text">TMAR global mixta: </span>
+                <span id="r_tmar"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static 'js/home.js' %}"></script>
+</body>
+</html>

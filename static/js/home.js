@@ -4,7 +4,9 @@ $('document').ready(function(){
     $('#id_capital_prestado').on('click', function () {
         window.location = '/inversion-inicial/';
     });
-
+    $('#id_tmar').on('click', function () {
+        window.location = '/tmar/';
+    });
     /*
     * Opciones para el  Pago del capital y los intereses al final del plazo.
     * */
@@ -46,6 +48,56 @@ $('document').ready(function(){
             }
         }
 
+    });
+
+    /**
+     *  Opciones para tmar
+     */
+    $(document).on('click', '#btn_tmar', function () {
+
+        let aporacion_inv = parseFloat($('#id_apor_inver').val());
+        let aportacion_otro = parseFloat($('#id_apor_otro').val());
+        let aportacion_ins = parseFloat($('#id_apor_inst').val());
+
+        let tmar_inv = parseFloat($('#id_tmar_inv').val());
+        let tmar_otro = parseFloat($('#id_tmar_otro').val());
+        let tmar_ins = parseFloat($('#id_tmar_inst').val());
+
+        let aportacion_total = aporacion_inv + aportacion_otro + aportacion_ins;
+        $('#r_aportacion').text(aportacion_total);
+
+        aporacion_inv_por = (aporacion_inv * 1)/aportacion_total
+        aportacion_otro_por = (aportacion_otro * 1)/aportacion_total;
+        aportacion_ins_por = (aportacion_ins * 1)/aportacion_total;
+
+        ponderacion_inv = (aporacion_inv_por * tmar_inv).toFixed(2);
+        ponderacion_otro = (aportacion_otro_por * tmar_otro).toFixed(2)
+        ponderacion_ins = (aportacion_ins_por * tmar_ins).toFixed(4);
+        $('#r_tmar').text(parseFloat(ponderacion_inv) + parseFloat(ponderacion_otro) + parseFloat(ponderacion_ins));
+
+        $('#table_body_tmar').children().remove();
+        $('#table_body_tmar').append('<tr>' +
+                '<th>Invercionista Privado</th>' +
+                '<th>'+ aporacion_inv.toFixed(2) +'</th>' +
+                '<th>'+ aporacion_inv_por.toFixed(2) +'</th>' +
+                '<th>'+ tmar_inv.toFixed(2) +'</th>' +
+                '<th>'+ ponderacion_inv +'</th>' +
+            '</tr>'+
+            '<tr>' +
+                '<th>Otras Empresas</th>' +
+                '<th>'+ aportacion_otro.toFixed(2) +'</th>' +
+                '<th>'+ aportacion_otro_por.toFixed(2) +'</th>' +
+                '<th>'+ tmar_otro.toFixed(2) +'</th>' +
+                '<th>'+ ponderacion_otro +'</th>' +
+            '</tr>'+
+            '<tr>' +
+                '<th>Institucion Financiera</th>' +
+                '<th>'+ aportacion_ins.toFixed(2) +'</th>' +
+                '<th>'+ aportacion_ins_por.toFixed(2) +'</th>' +
+                '<th>'+ tmar_ins.toFixed(2) +'</th>' +
+                '<th>'+ ponderacion_ins +'</th>' +
+            '</tr>'
+        );
     });
 
 });

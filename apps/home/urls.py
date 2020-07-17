@@ -7,4 +7,5 @@ app_name = 'home'
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('inversion-inicial/', InitialInvestment.as_view(), name='inversion_inicial'),
+    path('tmar/', TMARView.as_view(), name='tmar'),
 ]

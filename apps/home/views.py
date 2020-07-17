@@ -9,3 +9,7 @@ class HomeView(TemplateView):
 
 class InitialInvestment(TemplateView):
     template_name = 'capital_prestado.html'
+
+
+class TMARView(TemplateView):
+    template_name =  'tmar.html'
