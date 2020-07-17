@@ -119,6 +119,10 @@ html, body{
   width: 70%;
   height: 70%;
   @extend .wrap;
+      @media screen and (max-width: 400px){
+      width: 95%;
+      height: 95%;
+    }
 }
 
 .wrap-tab{
