@@ -151,6 +151,7 @@ html, body {
   padding-left: 10px;
   font-size: 15px;
   font-family: Arial;
+  margin: 2px;
 }
 
 .btn {
@@ -158,6 +159,7 @@ html, body {
   height: 40px;
   border: 0px;
   border-radius: 20px;
+  margin: 2px;
 }
 
 .btn-primary {
@@ -192,6 +194,7 @@ html, body {
   width: 100%;
   height: auto;
   margin-top: 20px;
+  overflow: scroll;
 }
 
 .form {
