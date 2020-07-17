@@ -13,3 +13,7 @@ class InitialInvestment(TemplateView):
 
 class TMARView(TemplateView):
     template_name =  'tmar.html'
+
+
+class FNEView(TemplateView):
+    template_name = 'fne.html'

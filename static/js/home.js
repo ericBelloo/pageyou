@@ -7,6 +7,9 @@ $('document').ready(function(){
     $('#id_tmar').on('click', function () {
         window.location = '/tmar/';
     });
+    $('#id_fne').on('click', function () {
+        window.location = '/fne/';
+    })
     /*
     * Opciones para el  Pago del capital y los intereses al final del plazo.
     * */
@@ -99,5 +102,52 @@ $('document').ready(function(){
             '</tr>'
         );
     });
+
+    /**
+     * Opciones para el Flujo Neto de efectivo
+     */
+    $(document).on('click', '#btn_fne', function () {
+        let ingresos = parseFloat($('#id_ingresos').val());
+        let gastos = parseFloat($('#id_gastos').val());
+        let depresiacion = parseFloat($('#id_depresiacion').val());
+        let financiamiento = 0.0;
+        let inflacion = 0.0;
+
+        if($('#id_financiamiento_val').val() !== ''){
+            financiamiento = parseFloat($('#id_financiamiento_val').val());
+        }
+        if($('#id_inflacion_val').val() !== ''){
+            inflacion = parseFloat($('#id_inflacion_val').val());
+        }
+
+        let utilidad = ingresos - gastos - depresiacion - financiamiento;
+        let isr = utilidad * 0.30;
+        let ptu = utilidad * 0.10;
+        let utilidad_inpuestos = utilidad - isr - ptu;
+        let fne = utilidad_inpuestos + depresiacion - inflacion;
+
+        $('#r_fne').text(fne.toFixed(4));
+    });
+
+    $('#id_financiamiento').change(function() {
+        // this will contain a reference to the checkbox
+        if (this.checked) {
+            $('#id_financiamiento_val').removeClass('dn');
+        } else {
+            $('#id_financiamiento_val').addClass('dn');
+            $('#id_financiamiento_val').val('');
+        }
+    });
+
+    $('#id_inflacion').change(function() {
+    // this will contain a reference to the checkbox
+        if (this.checked) {
+            $('#id_inflacion_val').removeClass('dn');
+        } else {
+            $('#id_inflacion_val').addClass('dn');
+            $('#id_inflacion_val').val('');
+        }
+    });
+
 
 });
