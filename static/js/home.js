@@ -1,6 +1,19 @@
 
 
 $('document').ready(function(){
+
+    if(document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+    }
+  //Google Chrome
+    else if(document.webkitCancelFullScreen) {
+        document.webkitCancelFullScreen();
+    }
+  //Otro
+     else if(document.cancelFullScreen) {
+         document.cancelFullScreen();
+     }
+
     $('#id_capital_prestado').on('click', function () {
         window.location = '/inversion-inicial/';
     });
