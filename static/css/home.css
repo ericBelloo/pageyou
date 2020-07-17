@@ -39,9 +39,7 @@ html, body {
   }
 }
 
-.wrap-content {
-  width: 300px;
-  height: 350px;
+.wrap, .wrap-form-content, .wrap-content {
   background-color: white;
   border-radius: 20px;
   -webkit-box-shadow: 0px 0px 13px 3px #c9c7c9;
@@ -51,6 +49,11 @@ html, body {
   padding: 10px;
 }
 
+.wrap-content {
+  width: 300px;
+  height: 350px;
+}
+
 .wrap-content:hover {
   width: 350px;
   height: 400px;
@@ -58,6 +61,10 @@ html, body {
 
 @media screen and (max-width: 400px) {
   .wrap-content {
+    width: 200px;
+    height: 250px;
+  }
+  .wrap-content:hover {
     width: 200px;
     height: 250px;
   }
@@ -102,6 +109,12 @@ html, body {
   text-align: center;
 }
 
+@media screen and (max-width: 400px) {
+  .wrap-body span {
+    margin-top: 10px;
+  }
+}
+
 .wrap-footer {
   width: 100%;
   height: 10%;
@@ -116,4 +129,120 @@ html, body {
   color: #566573;
   font-size: 1em;
   text-align: center;
+}
+
+.wrap-form-content {
+  width: 70%;
+  height: 70%;
+}
+
+.wrap-tab {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-flat {
+  height: 35px;
+  border: 1px solid #566573;
+  border-radius: 20px;
+  padding-left: 10px;
+  font-size: 15px;
+  font-family: Arial;
+}
+
+.btn {
+  width: 100px;
+  height: 40px;
+  border: 0px;
+  border-radius: 20px;
+}
+
+.btn-primary {
+  background-color: #3498db;
+  color: white;
+  font-size: 1em;
+}
+
+.text {
+  font-size: 20px;
+  color: #566573;
+  font-family: Arial;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  border: 1px solid #3498db;
+  margin: 5px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.tab span {
+  font-size: 1em;
+  text-align: center;
+  font-family: Arial;
+}
+
+.content-table {
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+}
+
+.form {
+  margin-top: 10px;
+}
+
+table {
+  width: 100%;
+  border: 1px solid #999;
+  text-align: left;
+  border-collapse: collapse;
+  margin: 0 0 1em 0;
+  caption-side: top;
+}
+
+caption, td, th {
+  padding: 0.3em;
+  font-size: 0.8em;
+  text-align: center;
+  font-family: Arial;
+}
+
+th, td {
+  border-bottom: 1px solid #999;
+  width: 15%;
+}
+
+th table, td table {
+  width: 100%;
+  border: 1px solid #999;
+  text-align: left;
+  border-collapse: collapse;
+  margin: 0 0 1em 0;
+  caption-side: top;
+}
+
+th caption, th td, th th, td caption, td td, td th {
+  padding: 0.3em;
+}
+
+th th, th td, td th, td td {
+  border-bottom: 1px solid #999;
+  width: 25%;
+}
+
+th caption, td caption {
+  font-weight: bold;
+  font-style: italic;
+}
+
+caption {
+  font-weight: bold;
+  font-style: italic;
 }
