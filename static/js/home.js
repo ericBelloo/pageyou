@@ -125,6 +125,7 @@ $('document').ready(function(){
         let depresiacion = parseFloat($('#id_depresiacion').val());
         let financiamiento = 0.0;
         let inflacion = 0.0;
+        let modena = 1;
 
         if($('#id_financiamiento_val').val() !== ''){
             financiamiento = parseFloat($('#id_financiamiento_val').val());
@@ -133,12 +134,16 @@ $('document').ready(function(){
             inflacion = parseFloat($('#id_inflacion_val').val());
         }
 
+        if($('#id_moneda').val() !== ''){
+            modena = parseFloat($('#id_moneda').val());
+        }
+
         let utilidad = ingresos - gastos - depresiacion - financiamiento;
         let isr = utilidad * 0.30;
         let ptu = utilidad * 0.10;
         let utilidad_inpuestos = utilidad - isr - ptu;
         let fne = utilidad_inpuestos + depresiacion - inflacion;
-
+        fne = fne * modena;
         $('#r_fne').text(fne.toFixed(4));
     });
 
@@ -146,19 +151,23 @@ $('document').ready(function(){
         // this will contain a reference to the checkbox
         if (this.checked) {
             $('#id_financiamiento_val').removeClass('dn');
+            $('#id_inflacion_val').removeClass('dn');
         } else {
             $('#id_financiamiento_val').addClass('dn');
             $('#id_financiamiento_val').val('');
+
+            $('#id_inflacion_val').addClass('dn');
+            $('#id_inflacion_val').val('');
         }
     });
 
     $('#id_inflacion').change(function() {
     // this will contain a reference to the checkbox
         if (this.checked) {
-            $('#id_inflacion_val').removeClass('dn');
+            $('#id_moneda').removeClass('dn')
         } else {
-            $('#id_inflacion_val').addClass('dn');
-            $('#id_inflacion_val').val('');
+            $('#id_moneda').addClass('dn');
+            $('#id_moneda').val('');
         }
     });
 
