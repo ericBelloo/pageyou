@@ -145,6 +145,8 @@ $('document').ready(function(){
         let fne = utilidad_inpuestos + depresiacion - inflacion;
         fne = fne * modena;
         $('#r_fne').text(fne.toFixed(4));
+        $('#r_utilidad').text(utilidad);
+        $('#r_utilidad_impuestos').text(utilidad_inpuestos);
     });
 
     $('#id_financiamiento').change(function() {
