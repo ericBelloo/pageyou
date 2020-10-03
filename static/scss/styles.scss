@@ -1,1 +1,36 @@
 
+@import "scss/colors.scss";
+@import "scss/fonts.scss";
+@import "scss/containers.scss";
+@import "scss/contents.scss";
+@import "scss/fields.scss";
+@import "scss/buttons.scss";
+@import "scss/margins.scss";
+@import "scss/papers.scss";
+@import "scss/titles.scss";
+
+
+html, body{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: auto;
+    background-color: $gray-1;
+}
+
+section{
+    width: 100%;
+    height: auto;
+}
+
+form{
+    margin: 0px;
+    padding: 40px;
+    height: auto;
+    label{
+        margin: 5px;
+        letter-spacing: 0.5px;
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-size: 1em;
+    }
+}

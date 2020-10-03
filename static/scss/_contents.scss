@@ -1,0 +1,57 @@
+@import './containers';
+
+// clase de columnas
+.clm {
+    height: auto;
+    margin: 2px;
+    padding: 0px;
+    text-align: center;
+  }
+
+.content{
+    width: 100%;
+    height: 100%;
+    &-center{
+        @extend .df, .aic, .jcc;
+    }
+    &-account{
+        width: 100%;
+        height: 100vh;
+        @extend .df, .aic, .jcc, .fdc;
+        &-btn{
+            width: 100%;
+            height: auto;
+            @extend .df, .aic, .jcc;
+            flex-direction: row;
+            @media screen and (max-width:400px){
+                flex-direction: column;
+            }
+        }
+    }
+    &-clm{
+        @extend .df, .fdc;
+    }
+    &-row{
+        // contenedor para filas
+        width: 100%;
+        height: 100%;
+        @extend .df, .dfw;
+    }
+    &-clm1{
+        // contenedor para un columna por fila
+        @extend .clm;
+        width: 100%;
+        height: 100%;
+        flex: calc(100% / 1);
+    }
+    &-clm2{
+        //contenedor para dos columnas por fila
+        @extend .clm;
+        flex: calc(100% / 3);
+    }
+    &-clm3{
+        // contenedor para tres columnas por fila
+        @extend .clm;
+        flex: calc(100% / 4);
+    }
+}

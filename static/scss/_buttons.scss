@@ -1,0 +1,28 @@
+@import "./colors.scss";
+
+.btn{
+    margin: 2px;
+    color: white;
+    border: 0px;
+    font-size: 1em;
+    font-family: 'Open Sans Condensed', sans-serif;
+    &-account{
+        width: 35%;
+        height: 35px;
+        @media screen and (max-width:400px){
+            width: 80%;
+        }
+    }
+    &-primary{
+        background-color: $dark-gray-3;
+        color: white;
+    }
+    &-secondary{
+        background-color: $orange-1;
+        color: white;
+    }
+    a{
+        text-decoration: none;
+        color: white;
+    }
+}

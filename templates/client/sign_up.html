@@ -1,0 +1,47 @@
+
+{%  extends 'base.html' %}
+
+{% block section %}
+    <section class="content-account">
+        <div class="paper paper-account">
+            <form method="post">
+                {% csrf_token %}
+                <div class="content-row">
+                    <span class="title title-account">Registrate</span>
+                </div>
+                <div class="content-row mt-2">
+                    <div class="content-clm1">
+                        {{ form.username.label_tag }}
+                        {{ form.username }}
+                    </div>
+                    <div class="content-clm1">
+                        {{ form.password.label_tag }}
+                        {{ form.password }}
+                    </div>
+                    <div class="content-clm1">
+                        {{ form.password1.label_tag }}
+                        {{ form.password1 }}
+                    </div>
+                    <div class="content-clm1">
+                        {{ form.password2.label_tag }}
+                        {{ form.password2 }}
+                    </div>
+                    <div class="content-clm1">
+                        {{ form.email.label_tag }}
+                        {{ form.email }}
+                    </div>
+                </div>
+                <div class="content-row mt-2">
+                    <div class="content-clm1">
+                        <button type="submit" class="btn btn-account btn-primary">
+                            <a href="{% url 'client:login' %}">Iniciar Secion</a>
+                        </button>
+                        <button type="submit" class="btn btn-account btn-secondary">
+                            Registrarse
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}

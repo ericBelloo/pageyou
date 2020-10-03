@@ -1,0 +1,19 @@
+
+@import "./colors.scss";
+
+.title{
+    margin: 5px;
+    padding: 0px;
+    color: $dark-gray-3;
+    font-size: 60px;
+    font-family: 'Special Elite', cursive;
+    text-align: center;
+    @media screen and (max-width:400px){
+        font-size: 50px;
+    }
+    &-account{
+        color: $dark-gray-3;
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-size: 1.5em;
+    }
+}

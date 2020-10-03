@@ -21,7 +21,7 @@ urlpatterns = [
     # clientes
     path('client/', include('apps.client.urls')),
     # catalogos
-    path('catalog/', include('apps.catalog.urls')),
+    #path('catalog/', include('apps.catalog.urls')),
     # accounts
-    path('account/', include('apps.account.urls')),
+    #path('account/', include('apps.account.urls')),
 ]
