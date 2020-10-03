@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Podemos Progresar</title>
+    <link href="{% static 'css/bundle.css' %}" rel="stylesheet", type="text/css">
+</head>
+<body>
+    <header>
+    </header>
+    {% include 'partials/message.html' %}
+    {% block section %}
+    {% endblock %}
+    <footer>
+    </footer>
+    <script src="{% static 'js/bundle.js' %}"></script>
+</body>
+</html>
