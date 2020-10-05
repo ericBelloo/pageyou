@@ -1,0 +1,39 @@
+
+{%  extends 'base.html' %}
+
+{% block section %}
+    <section class="content-account">
+        <div class="paper paper-group">
+            <form method="get">
+                {% csrf_token %}
+                <div class="content-row">
+                    <span class="title title-account">Buscar Grupo</span>
+                </div>
+                <div class="content-row mt-2">
+                    <div class="content-clm1">
+                        <label>Buscar Grupo</label>
+                        <input class="field-account" type="text" name="name" id="id_name">
+                    </div>
+                    <div class="content-clm1 mt-1">
+                        <button type="submit" class="btn btn-account btn-secondary">
+                            Buscar Grupo
+                        </button>
+                    </div>
+                </div>
+                <div class="content-row mt-2">
+                    {% for item in object_list %}
+                        <div class="content content-box">
+                            <a href="{% url 'client:user_groups' item.id %}">
+                                {{ item.name }}
+                            </a>
+                        </div>
+                    {% empty %}
+                    <div class="content content-box">
+                        <span class="text">No se encontraron grupos</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}

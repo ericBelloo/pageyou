@@ -2,7 +2,8 @@
 from django import forms
 
 # models
-from django.contrib.auth.models import User
+from apps.client.models import Client
+from django.contrib.auth.models import User, Group
 
 
 class ClientLoginForm(forms.Form):
@@ -12,7 +13,7 @@ class ClientLoginForm(forms.Form):
                                widget=forms.PasswordInput(attrs={'required': True, 'class': 'field-account'}))
 
 
-class ClientSignUpForm(forms.Form):
+class UserSignUpForm(forms.Form):
     """ Formulario para el registro de usuario """
     username = forms.CharField(label='Nombre de usuario*', min_length=4, max_length=150,
                                widget=forms.TextInput(attrs={'required': True, 'class': 'field-account'}))
@@ -25,10 +26,11 @@ class ClientSignUpForm(forms.Form):
 
     def clean_username(self):
         username = self.cleaned_data['username'].lower()
-        user = User.objects.filter(username=username)
-        if user.count():
+        user_count = User.objects.filter(username=username).count()
+        if user_count > 0:
             raise forms.ValidationError("El usuario ya existe")
-        return username
+        else:
+            return username
 
     def clean_password2(self):
         password1 = self.cleaned_data['password1']
@@ -46,3 +48,22 @@ class ClientSignUpForm(forms.Form):
             self.cleaned_data['password1']
         )
         return user
+
+
+class NewGroupView(forms.Form):
+    name = forms.CharField(label='Nombre*',
+                           widget=forms.TextInput(attrs={'required': True, 'class': 'field-account'},))
+
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        group_count = Group.objects.filter(name=name).count()
+        if group_count > 0:
+            raise forms.ValidationError('El nombre del grupo ya existe')
+        else:
+            return name
+
+    def save(self):
+        group = Group.objects.create(
+            name=self.cleaned_data['name'],
+        )
+        return group

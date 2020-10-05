@@ -1,0 +1,60 @@
+
+{# template to request group registration #}
+
+{%  extends 'base.html' %}
+
+{# template to request group registration #}
+
+{% block section %}
+    <section class="content-account">
+        <div class="paper paper-group">
+            <form method="post">
+                {% csrf_token %}
+                <div class="content-row">
+                    <span class="title title-account">{{ group.name }}</span>
+                </div>
+                <div class="content-row">
+                    <span class="text">{{ user.username }}</span>
+                </div>
+                <div class="content-row">
+                    <span class="text">CLIENTES</span>
+                </div>
+                <div class="content-row">
+                    {% for item in object_list %}
+                        <div class="content content-box">
+                            <span class="text"> {{ item.username }}</span>
+                            {% if perms.client.coordinator %}
+                                <span class="text">Coordinador</span>
+                            {% endif %}
+                        </div>
+                    {% empty %}
+                    <div class="content content-box">
+                        <span class="text">No se encontraron participantes</span>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="content-row mt-2">
+                    <span class="text">CUENTAS</span>
+                </div>
+                {% if not member %}
+                <div class="content-row mt-2">
+                    <div class="content-clm1 mt-1">
+                        <button type="submit" class="btn btn-account btn-secondary">
+                            Unirte al grupo
+                        </button>
+                    </div>
+                </div>
+                {% endif %}
+                {% if account %}
+                <div class="content-row mt-2">
+                    <div class="content-clm1 mt-1">
+                        <button type="button" class="btn btn-account btn-primary">
+                            <a href="{% url 'account:new_account' %}">Solicitar Prestamo</a>
+                        </button>
+                    </div>
+                </div>
+                {% endif %}
+            </form>
+        </div>
+    </section>
+{% endblock %}

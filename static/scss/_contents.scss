@@ -1,4 +1,5 @@
 @import './containers';
+@import './colors';
 
 // clase de columnas
 .clm {
@@ -53,5 +54,24 @@
         // contenedor para tres columnas por fila
         @extend .clm;
         flex: calc(100% / 4);
+    }
+    &-box{
+        display: flex;
+        align-item: center;
+        width: 100%;
+        height: 30px;
+        border: 1px solid $gray-3;
+        margin: 2px;
+        a {
+            margin-top: 5px;
+            margin-left: 10px;
+            text-decoration: none;
+            color: $dark-gray-3;
+            font-size: 15px;
+            font-family: 'Open Sans Condensed', sans-serif;
+        }
+        &:hover{
+            cursor: pointer;
+        }
     }
 }

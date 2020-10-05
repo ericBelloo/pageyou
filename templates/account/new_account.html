@@ -1,0 +1,36 @@
+
+{%  extends 'base.html' %}
+
+{% block section %}
+    <section class="content-account">
+        <div class="paper paper-account">
+            <form method="post" style="width: 100%">
+                {% csrf_token %}
+                <div class="content-row">
+                    <span class="title title-account">Cuentas</span>
+                </div>
+                <div class="content-row mt-2">
+                    <div class="content-clm1">
+                        {{ form.status.label_tag }}
+                        {{ form.status }}
+                    </div>
+                    <div class="content-clm1">
+                        {{ form.amount.label_tag }}
+                        {{ form.amount }}
+                    </div>
+                    <div class="content-clm1">
+                        {{ form.number_payments.label_tag }}
+                        {{ form.number_payments }}
+                    </div>
+                </div>
+                <div class="content-row mt-2">
+                    <div class="content-clm1">
+                        <button type="submit" class="btn btn-account btn-secondary">
+                            Solicitar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}

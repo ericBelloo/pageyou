@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # application app
+    'rest_framework',
     'django_sass',
     'apps.client',      # clientes
     'apps.account',     # cuentas
@@ -69,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'apps.client.processors.get_user',
             ],
         },
     },
@@ -131,3 +133,11 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     '/var/www/static/',
 ]
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}

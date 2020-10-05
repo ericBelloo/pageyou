@@ -20,8 +20,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # clientes
     path('client/', include('apps.client.urls')),
-    # catalogos
-    #path('catalog/', include('apps.catalog.urls')),
     # accounts
-    #path('account/', include('apps.account.urls')),
+    path('account/', include('apps.account.urls')),
+    # catalogos
+    # path('catalog/', include('apps.catalog.urls')),
 ]
