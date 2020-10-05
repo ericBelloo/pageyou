@@ -16,7 +16,7 @@ class CreateAccountForm(forms.ModelForm):
 
     class Meta:
         model = Account
-        fields = ('status', 'amount', 'group')
+        fields = ('status', 'amount',)
         widget = {
             'status': forms.Select(
                 choices=STATUS_ACCOUNT, attrs={'disabled': True}),
