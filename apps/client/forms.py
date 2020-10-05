@@ -43,9 +43,9 @@ class UserSignUpForm(forms.Form):
 
     def save(self, commit=True):
         user = User.objects.create_user(
-            self.cleaned_data['username'],
-            self.cleaned_data['email'],
-            self.cleaned_data['password1']
+            username=self.cleaned_data['username'],
+            email=self.cleaned_data['email'],
+            password=self.cleaned_data['password1']
         )
         return user
 

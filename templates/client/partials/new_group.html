@@ -1,0 +1,25 @@
+
+<div class="paper paper-account">
+        <form method="post">
+            {% csrf_token %}
+            <div class="content-row">
+                <span class="title title-account">Bienvenido</span>
+            </div>
+            <div class="content-row mt-2">
+                <div class="content-clm1">
+                    {{ form.name.label_tag }}
+                    {{ form.name }}
+                </div>
+            </div>
+            <div class="content-row mt-2">
+                <div class="content-clm1">
+                    <button type="button" class="btn btn-account btn-primary">
+                        Unirse a grupo
+                    </button>
+                    <button type="submit" class="btn btn-account btn-secondary">
+                        Agregar nuevo
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
