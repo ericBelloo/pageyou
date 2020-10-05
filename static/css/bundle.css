@@ -259,6 +259,7 @@ section {
 }
 
 form {
+  width: 100%;
   margin: 0px;
   padding: 40px;
   height: auto;
