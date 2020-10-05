@@ -1,0 +1,22 @@
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.log
+*.pot
+*.pyc
+*.pyo
+*~
+**~lock**
+*.py~*
+*.html~*
+*.css~*
+*.js~*
+**/__pycache__
+
+**__init__.py
+
+
+### Django Migrations ###
+**/migrations/0*.py
+
