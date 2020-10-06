@@ -20,3 +20,7 @@ __pycache__/
 ### Django Migrations ###
 **/migrations/0*.py
 
+## Sqllyte ##
+db.sqlite3
+.sqlite3
+.idea
