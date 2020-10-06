@@ -11,10 +11,10 @@
             <form method="post">
                 {% csrf_token %}
                 <div class="content-row">
-                    <span class="title title-account">{{ group.name }}</span>
+                    <span class="title title-account"> {{ group.name }}</span>
                 </div>
                 <div class="content-row">
-                    <span class="text">{{ user.username }}</span>
+                    <span class="text">Usuario: {{ user.username }}</span>
                 </div>
                 <div class="content-row">
                     <span class="text">CLIENTES</span>

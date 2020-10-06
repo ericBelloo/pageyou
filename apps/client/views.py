@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views.generic import FormView
 from django.views.generic.list import ListView
-from django.contrib.auth.models import Group, User
+from django.contrib.auth.models import Group, User, Permission
 from utils.constants import Message
 # forms
 from apps.client.forms import ClientLoginForm, NewGroupView, UserSignUpForm
@@ -46,7 +46,7 @@ def logout_view(request):
 class SignUpView(SuccessMessageMixin, FormView):
     template_name = 'client/sign_up.html'
     form_class = UserSignUpForm
-    success_message = 'El usuario se creo correctamente'
+    # success_message = 'El usuario se creo correctamente'
 
     def form_valid(self, form):
         user = form.save()
@@ -78,6 +78,8 @@ class NewGroupView(FormView):
         client = Client.objects.get(user=user)
         client.coordinator = True   # set coordinator
         client.save()
+        permission = Permission.objects.get(codename='coordinator')
+        user.user_permissions.add(permission)
         group.user_set.add(client.user)  # add client to new group
         messages.success(self.request, Message.SUCCESS_SAVE)
         return HttpResponseRedirect(self.get_success_url())
@@ -133,7 +135,12 @@ class ClientGroupList(SuccessMessageMixin, ListView):
         return context
 
     def post(self, *args, **kwargs):
-        group = self.model.objects.get(id=self.kwargs.get('pk'))
-        user = User.objects.get(username=self.request.user)  # get user
-        group.user_set.add(user)  # add client to new group
+        group_count = self.model.objects.get(id=self.kwargs.get('pk')).user_set.all()
+        if group_count.count() > 4:
+            messages.error(self.request, 'El grupo exede el numero de integrantes')
+        else:
+            group = self.model.objects.get(id=self.kwargs.get('pk'))
+            user = User.objects.get(username=self.request.user)  # get user
+            group.user_set.add(user)  # add client to new group
+            messages.success(self.request, Message.SUCCESS_SAVE)
         return HttpResponseRedirect(self.request.META.get('HTTP_REFERER'))

@@ -5,8 +5,10 @@ from apps.client.models import Client
 
 def get_user(request):
     try:
-        user = User.objects.get(username=request.user)
-        client = Client.objects.get(user=user)
-        return {'client': client, 'user': user}
+        if request.user.is_authenticated:
+            user = User.objects.get(username=request.user)
+            return {'user': user}
+        else:
+            return {}
     except ObjectDoesNotExist:
         raise Exception("El usuario no existe")
