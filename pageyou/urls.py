@@ -20,7 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # clientes
     path('client/', include('apps.client.urls')),
-    # accounts
+    # account
     path('account/', include('apps.account.urls')),
     # api account
     path('api_account/', include('apps.account.api.urls')),

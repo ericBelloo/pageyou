@@ -7,7 +7,11 @@ from apps.account.api.serializers import TransactionsSerializer
 
 
 class SaveTransaction(APIView):
-
+    """
+        {"account":"3", "calendar": "1",
+    "date": "2020-10-13",
+    "payment_number": "1", "amount": "916.67"}
+    """
     def post(self, request):
         try:
             account_id = request.data.get('account')
