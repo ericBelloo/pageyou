@@ -20,7 +20,7 @@
                     <span class="text">CLIENTES</span>
                 </div>
                 <div class="content-row">
-                    {% for item in object_list %}
+                    {% for item in group_list %}
                         <div class="content content-box">
                             <span class="text"> {{ item.username }}</span>
                             {% if item|check_permission:'coordinator' %}
@@ -36,6 +36,20 @@
                 <div class="content-row mt-2">
                     <span class="text">CUENTAS</span>
                 </div>
+                <div class="content-row">
+                    {% for item in object_list %}
+                        <div class="content content-box">
+                            <a href="{% url 'account:calendar' item.id %}">
+                                <span class="text"> {{ item.amount }} - {{ item.status }}</span>
+                            </a>
+                        </div>
+                    {% empty %}
+                    <div class="content content-box">
+                        <span class="text">Aun no tienen cuentas</span>
+                    </div>
+                    {% endfor %}
+                </div>
+
                 {% if not member %}
                 <div class="content-row mt-2">
                     <div class="content-clm1 mt-1">
@@ -45,7 +59,7 @@
                     </div>
                 </div>
                 {% endif %}
-                {% if account %}
+                {% if new_account %}
                 <div class="content-row mt-2">
                     <div class="content-clm1 mt-1">
                         <button type="button" class="btn btn-account btn-primary">

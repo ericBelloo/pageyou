@@ -22,6 +22,6 @@ urlpatterns = [
     path('client/', include('apps.client.urls')),
     # accounts
     path('account/', include('apps.account.urls')),
-    # catalogos
-    # path('catalog/', include('apps.catalog.urls')),
+    # api account
+    path('api_account/', include('apps.account.api.urls')),
 ]

@@ -11,6 +11,9 @@ class Account(BaseDateModel):
     # Foreign Key
     group = models.ForeignKey(Group, null=True, on_delete=models.SET_NULL)
 
+    def __str__(self):
+        return self.group.name + ' - ' + str(self.amount)
+
 
 class Calendar(models.Model):
 
@@ -22,6 +25,9 @@ class Calendar(models.Model):
     # Foreign Key
     account = models.ForeignKey(Account, null=True, blank=False, on_delete=models.SET_NULL)
 
+    def __str__(self):
+        return self.account.__str__() + ' - ' + self.status
+
 
 class Transactions(models.Model):
 
@@ -30,3 +36,6 @@ class Transactions(models.Model):
 
     # Foreign Key
     account = models.ForeignKey(Account, null=True, blank=False, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return self.account.name + ' - ' + self.date

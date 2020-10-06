@@ -6,14 +6,13 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.views.generic import FormView
-from django.views.generic.list import ListView
+from django.views.generic import FormView, ListView
 from django.contrib.auth.models import Group, User, Permission
 from utils.constants import Message
 # forms
 from apps.client.forms import ClientLoginForm, NewGroupView, UserSignUpForm
 from apps.client.models import Client
-
+from apps.account.models import Account
 
 class LoginView(SuccessMessageMixin, FormView):
     template_name = 'client/login.html'
@@ -115,23 +114,25 @@ class ClientGroupList(SuccessMessageMixin, ListView):
     def get_queryset(self):
         """ Show all group clients """
         group = self.model.objects.get(id=self.kwargs.get('pk'))
-        return group.user_set.all()
+        account = Account.objects.filter(group=group)
+        return account
 
     def get_context_data(self, **kwargs):
         context = super(ClientGroupList, self).get_context_data(**kwargs)
         group_count = self.model.objects.get(id=self.kwargs.get('pk')).user_set.all()
         user = User.objects.get(username=self.request.user)  # get user
         group = self.model.objects.get(id=self.kwargs.get('pk'))
+        context['group_list'] = group.user_set.all()
         if user in group_count:
             context['member'] = True
         else:
             context['member'] = False
         if group_count.count() >= 4 and user.has_perm('client.coordinator'):
-            account = True
+            new_account = True
         else:
-            account = False
+            new_account = False
         context['group'] = group
-        context['account'] = account
+        context['new_account'] = new_account
         return context
 
     def post(self, *args, **kwargs):

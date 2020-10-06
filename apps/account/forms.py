@@ -16,7 +16,7 @@ class CreateAccountForm(forms.ModelForm):
 
     class Meta:
         model = Account
-        fields = ('amount', )
+        fields = ('amount', 'status')
 
     def clean_amount(self):
         amount = self.cleaned_data['amount']

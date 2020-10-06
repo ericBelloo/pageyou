@@ -1,0 +1,52 @@
+
+
+{# template to request group registration #}
+
+{%  extends 'base.html' %}
+{% load permissiontag %}
+{# template to request group registration #}
+
+{% block section %}
+    <section class="content-account">
+        <div class="paper paper-group">
+            <form method="post">
+                {% csrf_token %}
+                <div class="content-row">
+                    <span class="title title-account"> CALENDARIO </span>
+                </div>
+                <div class="content-row">
+                    <span class="text">Grupo: {{ account.group.name }}</span>
+                </div>
+                <div class="content-row mt-2">
+                    <span class="text">CUENTAS</span>
+                </div>
+                <div class="content-row">
+                    {% for item in object_list %}
+                        <div class="content content-box">
+                            <span class="text"> No. {{ item.payment_number }} - Monto: {{ item.amount }}</span>
+                            <span class="text">  Fecha: {{ item.payment_date }} - </span>
+                            {% if item.status == 'PENDIENTE' %}
+                                <span class="text" style="color: #c62828"> {{ item.status }} </span>
+                            {% elif item.status == 'PAGADO' %}
+                                <span class="text" style="color: #43a047"> {{ item.status }} </span>
+                            {% endif %}
+                        </div>
+                    {% empty %}
+                    <div class="content content-box">
+                        <span class="text">Aun no tienen cuentas</span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% if new_account %}
+                <div class="content-row mt-2">
+                    <div class="content-clm1 mt-1">
+                        <button type="button" class="btn btn-account btn-primary">
+                            <a href="{% url 'account:new_account' group.id  %}">Solicitar Prestamo</a>
+                        </button>
+                    </div>
+                </div>
+                {% endif %}
+            </form>
+        </div>
+    </section>
+{% endblock %}
