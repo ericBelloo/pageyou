@@ -1,9 +1,7 @@
-
 from django import forms
 
 # models
 from apps.account.models import Account
-
 
 STATUS_ACCOUNT = [
     ('DESEMBOLSADA', 'DESEMBOLSADA'),
@@ -12,20 +10,19 @@ STATUS_ACCOUNT = [
 
 
 class CreateAccountForm(forms.ModelForm):
-    number_payments = forms.CharField(widget=forms.TextInput(attrs={'class': 'field-account'}))
+    amount = forms.CharField(widget=forms.TextInput(attrs={'class': 'field-account'}), label='Monto', required=False)
+    status = forms.ChoiceField(widget=forms.Select(attrs={'disabled': True}), choices=STATUS_ACCOUNT,
+                               initial='DESEMBOLSADA', required=False)
 
     class Meta:
         model = Account
-        fields = ('status', 'amount', 'group')
-        widget = {
-            'status': forms.Select(
-                choices=STATUS_ACCOUNT, attrs={'disabled': True}),
-            'amount': forms.TextInput(
-                attrs={'required': True, 'class': 'field-account', }
-            )
-        }
-        labels = {
-            'status': 'Estado',
-            'amount': 'Prestamo total*',
-            'number_payments': 'Numero de pagos*'
-        }
+        fields = ('amount', )
+
+    def clean_amount(self):
+        amount = self.cleaned_data['amount']
+        number = float(amount)
+        if 10000 < number < 100000:
+            return amount
+        else:
+            raise forms.ValidationError('El monto no es valido')
+

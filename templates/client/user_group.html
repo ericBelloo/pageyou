@@ -2,7 +2,7 @@
 {# template to request group registration #}
 
 {%  extends 'base.html' %}
-
+{% load permissiontag %}
 {# template to request group registration #}
 
 {% block section %}
@@ -23,7 +23,7 @@
                     {% for item in object_list %}
                         <div class="content content-box">
                             <span class="text"> {{ item.username }}</span>
-                            {% if perms.client.coordinator %}
+                            {% if item|check_permission:'coordinator' %}
                                 <span class="text">Coordinador</span>
                             {% endif %}
                         </div>
@@ -49,7 +49,7 @@
                 <div class="content-row mt-2">
                     <div class="content-clm1 mt-1">
                         <button type="button" class="btn btn-account btn-primary">
-                            <a href="{% url 'account:new_account' %}">Solicitar Prestamo</a>
+                            <a href="{% url 'account:new_account' group.id  %}">Solicitar Prestamo</a>
                         </button>
                     </div>
                 </div>

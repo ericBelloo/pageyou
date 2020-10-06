@@ -135,9 +135,9 @@ class ClientGroupList(SuccessMessageMixin, ListView):
         return context
 
     def post(self, *args, **kwargs):
-        group_count = self.model.objects.get(id=self.kwargs.get('pk')).user_set.all()
-        if group_count.count() > 4:
-            messages.error(self.request, 'El grupo exede el numero de integrantes')
+        group_count = self.model.objects.get(id=self.kwargs.get('pk')).user_set.all().count()
+        if group_count >= 4:
+            messages.error(self.request, 'El grupo solo puede contar con 4 integrantes')
         else:
             group = self.model.objects.get(id=self.kwargs.get('pk'))
             user = User.objects.get(username=self.request.user)  # get user
